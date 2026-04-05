@@ -146,6 +146,10 @@ export function claimReward(rewardId) {
     return false;
 }
 
+export function forceUpdate() {
+    notify();
+}
+
 export async function initApp(user) {
   state.user = user;
   
@@ -159,6 +163,15 @@ export async function initApp(user) {
   if (localStr) {
       try {
           state.data = { ...defaultState, ...JSON.parse(localStr) };
+          
+          // Migration: fix broken placeholder images from previous versions
+          state.data.habits = state.data.habits.map(h => {
+             if (h.image && h.image.includes('via.placeholder.com')) {
+                 const defaultHabit = defaultState.habits.find(dh => dh.id === h.id);
+                 if (defaultHabit) h.image = defaultHabit.image;
+             }
+             return h;
+          });
       } catch(e) {}
   }
 
@@ -184,6 +197,7 @@ import { renderBanner } from './components/heroBanner.js';
 import { renderTimer } from './components/pomodoroTimer.js';
 import { renderQuickAction } from './components/quickAction.js';
 import { renderCompletedHabits } from './components/completedHabits.js';
+import { applyLayout } from './components/layoutManager.js';
 
 function renderApp() {
     renderBanner();
@@ -194,4 +208,5 @@ function renderApp() {
     renderDailyHabits();
     renderRewards();
     renderCompletedHabits();
+    applyLayout();
 }

@@ -1,6 +1,8 @@
 import './style.css';
 import { setupAuth } from './firebase.js';
 import { initApp } from './state.js';
+import { openSettings } from './components/settingsPanel.js';
+import { openLayoutManager, applyLayout } from './components/layoutManager.js';
 
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Basic stubs for buttons
   document.getElementById('settings-btn').addEventListener('click', () => {
-      alert("Settings Panel Customization: Coming Soon! Check README for configuring Firebase.");
+      openSettings();
   });
 
   document.getElementById('layout-btn').addEventListener('click', () => {
-      alert("Layout Manager: Drag and drop custom widgets coming soon!");
+      openLayoutManager();
   });
 
   // Init Auth and App logic

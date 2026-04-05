@@ -1,4 +1,5 @@
-// src/components/quickAction.js
+import { openHabitModal } from './habitModal.js';
+
 export function renderQuickAction() {
     const container = document.getElementById('quick-action');
     if (!container) return;
@@ -20,8 +21,8 @@ export function renderQuickAction() {
 
     const btns = container.querySelectorAll('button');
     if (btns.length === 3) {
-        btns[0].onclick = () => alert("Create Good Habit modal coming soon!");
-        btns[1].onclick = () => alert("Create Bad Habit modal coming soon!");
+        btns[0].onclick = () => openHabitModal('good');
+        btns[1].onclick = () => openHabitModal('bad');
         btns[2].onclick = () => alert("Habit Database overview coming soon!");
     }
 }
