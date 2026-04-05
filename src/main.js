@@ -1,0 +1,53 @@
+import './style.css';
+import { setupAuth } from './firebase.js';
+import { initApp } from './state.js';
+
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("HabitForge: DOM loaded. Initializing...");
+  
+  // Theme Toggle Logic
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  
+  // Check local preferences
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    html.setAttribute('data-theme', savedTheme);
+  } else {
+    // Check system preference
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    if (prefersLight) {
+      html.setAttribute('data-theme', 'light');
+    }
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Attempt haptic
+    if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(50);
+    }
+  });
+
+  // Init Auth and App logic
+  setupAuth((user) => {
+    const authScreen = document.getElementById('auth-screen');
+    const appScreen = document.getElementById('app');
+
+    if (user) {
+      console.log("User signed in:", user.displayName);
+      authScreen.classList.add('hidden');
+      appScreen.classList.remove('hidden');
+      initApp(user); // Initialize state, load data, render components
+    } else {
+      console.log("User signed out.");
+      authScreen.classList.remove('hidden');
+      appScreen.classList.add('hidden');
+    }
+  });
+});

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Gamified Habit Tracker — Track your habits, earn XP, level up your life with Apple Liquid Glass aesthetics." />
+  <meta name="theme-color" content="#0a0a0f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>HabitForge — Level Up Your Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <!-- Auth Screen -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-bg"></div>
+    <div class="auth-card glass-deep">
+      <div class="auth-logo">
+        <span class="auth-logo-icon">⚡</span>
+        <h1 class="auth-title">HabitForge</h1>
+        <p class="auth-subtitle">Level up your life. Every. Single. Day.</p>
+      </div>
+      <button id="google-signin-btn" class="btn-primary btn-large">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+          <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+          <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+          <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+        </svg>
+        Continue with Google
+      </button>
+      <p class="auth-note">Your data syncs across all devices automatically.</p>
+    </div>
+  </div>
+
+  <!-- App Shell -->
+  <div id="app" class="app hidden">
+    <!-- Top Nav -->
+    <nav class="top-nav glass" id="top-nav">
+      <div class="nav-left">
+        <span class="nav-logo">⚡ HabitForge</span>
+      </div>
+      <div class="nav-right">
+        <button id="theme-toggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">
+          <i data-lucide="sun" class="light-icon"></i>
+          <i data-lucide="moon" class="dark-icon"></i>
+        </button>
+        <button id="settings-btn" class="icon-btn" title="Settings" aria-label="Settings">
+          <i data-lucide="settings"></i>
+        </button>
+        <button id="layout-btn" class="icon-btn" title="Customize Layout" aria-label="Customize layout">
+          <i data-lucide="layout-dashboard"></i>
+        </button>
+        <div id="user-avatar-nav" class="user-avatar-nav"></div>
+      </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <main id="dashboard" class="dashboard">
+      <!-- Hero Banner -->
+      <section id="section-banner" class="section-wrapper draggable-section" data-section="banner">
+        <div id="hero-banner"></div>
+      </section>
+
+      <!-- Main Grid -->
+      <div class="main-grid" id="main-grid">
+        <!-- Left Column -->
+        <div class="left-col" id="left-col">
+          <section id="section-status" class="section-wrapper draggable-section" data-section="status">
+            <div id="status-window"></div>
+          </section>
+          <section id="section-timer" class="section-wrapper draggable-section" data-section="timer">
+            <div id="pomodoro-timer"></div>
+          </section>
+          <section id="section-rewards" class="section-wrapper draggable-section" data-section="rewards">
+            <div id="rewards-panel"></div>
+          </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-col" id="right-col">
+          <section id="section-quickaction" class="section-wrapper draggable-section" data-section="quickaction">
+            <div id="quick-action"></div>
+          </section>
+          <section id="section-lifeareas" class="section-wrapper draggable-section" data-section="lifeareas">
+            <div id="life-areas"></div>
+          </section>
+          <section id="section-goodhabits" class="section-wrapper draggable-section" data-section="goodhabits">
+            <div id="daily-good-habits"></div>
+          </section>
+          <section id="section-badhabits" class="section-wrapper draggable-section" data-section="badhabits">
+            <div id="daily-bad-habits"></div>
+          </section>
+          <section id="section-calendar-good" class="section-wrapper draggable-section" data-section="calendar-good">
+            <div id="calendar-good"></div>
+          </section>
+          <section id="section-calendar-bad" class="section-wrapper draggable-section" data-section="calendar-bad">
+            <div id="calendar-bad"></div>
+          </section>
+          <section id="section-custom-widgets" class="section-wrapper" data-section="custom-widgets">
+            <div id="custom-widgets-container"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modals (rendered by JS) -->
+    <div id="modal-overlay" class="modal-overlay hidden"></div>
+    <div id="modal-container"></div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel" class="settings-panel hidden"></div>
+
+    <!-- Layout Manager Panel -->
+    <div id="layout-panel" class="layout-panel hidden"></div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Level Up Celebration -->
+    <div id="levelup-overlay" class="levelup-overlay hidden"></div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
