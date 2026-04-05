@@ -15,11 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (savedTheme) {
     html.setAttribute('data-theme', savedTheme);
   } else {
-    // Check system preference
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-    if (prefersLight) {
-      html.setAttribute('data-theme', 'light');
-    }
+    // Force dark mode purely for the aesthetic
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
   }
 
   themeToggle.addEventListener('click', () => {
