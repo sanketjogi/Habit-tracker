@@ -17,4 +17,11 @@ export function renderQuickAction() {
         </div>
     `;
     if(window.lucide) lucide.createIcons();
+
+    const btns = container.querySelectorAll('button');
+    if (btns.length === 3) {
+        btns[0].onclick = () => alert("Create Good Habit modal coming soon!");
+        btns[1].onclick = () => alert("Create Bad Habit modal coming soon!");
+        btns[2].onclick = () => alert("Habit Database overview coming soon!");
+    }
 }

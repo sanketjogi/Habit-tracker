@@ -32,6 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Basic stubs for buttons
+  document.getElementById('settings-btn').addEventListener('click', () => {
+      alert("Settings Panel Customization: Coming Soon! Check README for configuring Firebase.");
+  });
+
+  document.getElementById('layout-btn').addEventListener('click', () => {
+      alert("Layout Manager: Drag and drop custom widgets coming soon!");
+  });
+
   // Init Auth and App logic
   setupAuth((user) => {
     const authScreen = document.getElementById('auth-screen');

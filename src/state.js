@@ -18,9 +18,9 @@ const defaultState = {
     { id: 'h3', title: 'Healthy Diet', type: 'good', area: 'Health', image: 'assets/habit_healthy_diet.png', completions: [] },
     { id: 'h4', title: 'Reading', type: 'good', area: 'Self Improvement', image: 'assets/habit_reading.png', completions: [] },
     { id: 'h5', title: 'Good Sleep', type: 'good', area: 'Health', image: 'assets/habit_good_sleep.png', completions: [] },
-    { id: 'b1', title: 'Alcohol', type: 'bad', area: 'Health', image: 'https://via.placeholder.com/300?text=Alcohol', logs: [] },
-    { id: 'b2', title: 'Fast Food', type: 'bad', area: 'Health', image: 'https://via.placeholder.com/300?text=Fast+Food', logs: [] },
-    { id: 'b3', title: 'High Screen Time', type: 'bad', area: 'Self Improvement', image: 'https://via.placeholder.com/300?text=Screen+Time', logs: [] },
+    { id: 'b1', title: 'Alcohol', type: 'bad', area: 'Health', image: 'assets/habit_alcohol.png', logs: [] },
+    { id: 'b2', title: 'Fast Food', type: 'bad', area: 'Health', image: 'assets/habit_healthy_diet.png', logs: [] }, // Temp asset until quota refreshes
+    { id: 'b3', title: 'High Screen Time', type: 'bad', area: 'Self Improvement', image: 'assets/habit_deep_work.png', logs: [] },// Temp asset
   ],
   lifeAreas: [
     { id: 'a1', title: 'Health', image: 'assets/area_health.png' },
