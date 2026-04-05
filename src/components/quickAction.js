@@ -1,4 +1,5 @@
 import { openHabitModal } from './habitModal.js';
+import { openDatabaseModal } from './databaseModal.js';
 
 export function renderQuickAction() {
     const container = document.getElementById('quick-action');
@@ -23,6 +24,6 @@ export function renderQuickAction() {
     if (btns.length === 3) {
         btns[0].onclick = () => openHabitModal('good');
         btns[1].onclick = () => openHabitModal('bad');
-        btns[2].onclick = () => alert("Habit Database overview coming soon!");
+        btns[2].onclick = () => openDatabaseModal();
     }
 }
